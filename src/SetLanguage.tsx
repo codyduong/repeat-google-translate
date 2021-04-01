@@ -1,49 +1,28 @@
-import { useState, useEffect } from "react"
+
+const LANGS = require('./languages.json')
 
 const SetLanguage = (props: any) => {
-  const [langs, setLangs] = useState([])
-  const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState("")
+  let _langlist = []
 
-  useEffect(() => {
-    fetch("./languages.json")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setLoaded(true)
-          setLangs(result)
-        },
-        (error) => {
-          setLoaded(true)
-          setError(error)
-        }
-      )
-  }, [])
-
-  const LangTable = () => {
-    return (
-      <>
-      </>
-    )
+  for (const [key, value] of Object.entries(LANGS)) {
+    _langlist.push({key, value})
+    //console.log(`${key}: ${value}`);
   }
 
-
-  if (error) {
-    console.log(error)
-    return (
-      <div>There was an error</div>
-    ) 
-  } else if (!loaded) {
-    return (
-      <div>Loading...</div>
-    )
-  } else {
+  const test = _langlist.map(({key, value}) => {
     return (
       <div>
-
+        {key}
       </div>
     )
-  }
+  })
+  
+  
+  return (
+    <div>
+      {test}
+    </div>
+  )
 }
 
 export default SetLanguage
