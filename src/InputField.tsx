@@ -12,15 +12,23 @@ const InputField = (props: any) => {
     //props.setText
   }
 
+  const _inputStyling = {
+    display: "block",
+    width: "40%",
+    rows: "8",
+  }
   return (
-    <div>
-      <input
-        type="text"
+    <> 
+      <textarea
         name="name"
         id="name"
+        maxLength={5000}
         onChange={handleChange}
+        placeholder={props.placeholderText ?? ""}
+        style = {_inputStyling}
       />
-    </div>
+      {text.length}/5000
+    </>
   )
 
 }

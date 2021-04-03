@@ -1,23 +1,33 @@
 import { useState } from "react"
-import LanguageBar from "./LanguageBar"
 import InputField from "./InputField"
+import LanguageForm from "./LanguageForm"
+
+const _styling = {
+	marginLeft: "auto",
+	marginRight: "auto",
+	width: "80vw",
+}
 
 const Main = () => {
 	const [text, setText] = useState("")
-	const [langIn, setLangIn] = useState("")
-	const [langOut, setLangOut] = useState("")
 	
 	return (
-		<div>
-			<LanguageBar
-				setInput={setLangIn}
-				setOutput={setLangOut}
+		<div style={_styling}>
+			<div style={{display:"flexbox"}}>
+				<InputField
+					setText={setText}
+				/>
+				<div>
+					<textarea
+						disabled={true}
+						placeholder="Translation"
+						value={text}
+					/>
+				</div>
+			</div>
+			<LanguageForm 
+				
 			/>
-			<InputField
-				setText={setText}
-				language={langIn}
-			/>
-			{text}
 		</div>
 	)
 }
