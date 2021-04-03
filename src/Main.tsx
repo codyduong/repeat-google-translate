@@ -17,13 +17,15 @@ const Main = () => {
 				<InputField
 					setText={setText}
 				/>
-				<div>
-					<textarea
-						disabled={true}
-						placeholder="Translation"
-						value={text}
-					/>
-				</div>
+				<textarea
+					disabled={true}
+					placeholder="Translation"
+					value={text}
+					style={{
+						display: "block",
+						width: "40%",
+					}}
+				/>
 			</div>
 			<LanguageForm 
 				
