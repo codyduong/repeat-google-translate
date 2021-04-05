@@ -8,21 +8,27 @@ const SetLanguage = (props: any) => {
   const [selected, setSelected] = useState("") //the selected language
   const [shown, setShown] = useState(false)
   let _langlist = []
+  if (props.Input===true) {_langlist.push({key: "Auto Detect", value: "auto"})}
 
   for (const [key, value] of Object.entries(LANGS)) {
     _langlist.push({key, value})
     //console.log(`${key}: ${value}`);
   }
-
-  const _gridElement = {
-    
-  }
+  
+  const _gridElement = {}
   const gridElements = _langlist.map(({key, value}) => {
+    const _onClickFunc = () => {
+      setSelected(key + ' [' + value + ']')
+      if (props.Input===true) {
+        props.setSelected(key + ' [' + value + ']')
+      }
+    }
+
     return (
       <button 
         key = {key}
         style = {_gridElement}
-        onClick = {() => setSelected(key + ' [' + value + ']')}
+        onClick = {() => _onClickFunc()}
         disabled = {!shown}
       >
         {key}
@@ -43,12 +49,12 @@ const SetLanguage = (props: any) => {
     reverse: !shown,
     overflow: 'hidden',
     maxHeight: '100em',
-    from: { opacity: 0, maxHeight: '4em'},
+    from: { opacity: 0, maxHeight: '0em'},
   })
   
   return (
     <div>
-      Translate to: {selected} 
+      Translate {props.Input===false ? "to" : "from"}: {selected} 
       <input
         style={{zIndex: 1}}
         type="button"
@@ -57,7 +63,7 @@ const SetLanguage = (props: any) => {
           setShown(!shown)
         }}
       />
-      <input
+      {props.Input===false ? <input
         type="button"
         value="Add Step"
         onClick={() => {
@@ -72,7 +78,7 @@ const SetLanguage = (props: any) => {
           setLast(selected)
           setSelected("")
         }}
-      />
+      /> : null}
       <animated.div style={animate}>
         {gridElements}
       </animated.div>

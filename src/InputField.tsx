@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react"
+import SetLanguage from "./SetLanguage"
 
 const InputField = (props: any) => {
   const [text, setText] = useState("")
+  const [selected, setSelected] = useState("")
 
   const handleChange = (event: any) => {
     setText(event.target.value)
@@ -19,6 +21,10 @@ const InputField = (props: any) => {
   }
   return (
     <> 
+      <SetLanguage
+        Input={true}
+        setSelected={setSelected}
+      />
       <textarea
         name="name"
         id="name"

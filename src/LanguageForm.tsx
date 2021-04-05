@@ -26,6 +26,7 @@ const LanguageField = () => {
       </div>
       <span><b>Add Step</b></span><br />
       <SetLanguage
+        Input={false}
         AddStep={addStep}
       />
     </div>
