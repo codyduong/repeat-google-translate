@@ -15,9 +15,8 @@ const InputField = (props: any) => {
   }
 
   const _inputStyling = {
-    display: "block",
-    width: "40%",
-    rows: "8",
+    display: "inline-block",
+    width: "50%",
   }
   return (
     <> 

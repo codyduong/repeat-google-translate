@@ -8,7 +8,7 @@ const SetLanguage = (props: any) => {
   const [selected, setSelected] = useState("") //the selected language
   const [shown, setShown] = useState(false)
   let _langlist = []
-  if (props.Input===true) {_langlist.push({key: "Auto Detect", value: "auto"})}
+  props.Input===true && _langlist.push({key: "Detect Language ", value: "auto"})
 
   for (const [key, value] of Object.entries(LANGS)) {
     _langlist.push({key, value})
@@ -19,7 +19,7 @@ const SetLanguage = (props: any) => {
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
       setSelected(key + ' [' + value + ']')
-      if (props.Input===true) {
+      if (props.input===true) {
         props.setSelected(key + ' [' + value + ']')
       }
     }
@@ -38,7 +38,7 @@ const SetLanguage = (props: any) => {
 
   const animate = useSpring({
     display: "grid",
-    gridTemplateColumns: "15% 15% 15% 15% 15%",
+    gridTemplateColumns: "16.66% 16.66% 16.66% 16.66% 16.66% 16.66%",
     //gridTemplateRows: "15%", disabled to auto height
     //top: '0px',
     opacity: 1,
@@ -54,7 +54,7 @@ const SetLanguage = (props: any) => {
   
   return (
     <div>
-      Translate {props.Input===false ? "to" : "from"}: {selected} 
+      Translate {props.input===false ? "to" : "from"}: {selected} 
       <input
         style={{zIndex: 1}}
         type="button"
@@ -63,7 +63,7 @@ const SetLanguage = (props: any) => {
           setShown(!shown)
         }}
       />
-      {props.Input===false ? <input
+      {props.input===false ? <input
         type="button"
         value="Add Step"
         onClick={() => {
@@ -71,7 +71,7 @@ const SetLanguage = (props: any) => {
             alert('Cannot translate twice in the row to the same language');
             setSelected("");
           }
-          selected !== "" && props.AddStep({  //a dumb if statement lol
+          selected !== "" && props.addStep({  //a dumb if statement lol
             language: selected,
             other: "lol",
           })

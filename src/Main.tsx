@@ -5,8 +5,9 @@ import LanguageForm from "./LanguageForm"
 const _styling = {
 	marginLeft: "auto",
 	marginRight: "auto",
-	width: "80vw",
+	width: "90vw",
 }
+
 
 const Main = () => {
 	const [text, setText] = useState("")
@@ -22,8 +23,8 @@ const Main = () => {
 					placeholder="Translation"
 					value={text}
 					style={{
-						display: "block",
-						width: "40%",
+						display: "inline-block",
+						width: "50%",
 					}}
 				/>
 			</div>

@@ -20,14 +20,15 @@ const LanguageField = () => {
   return (
     <div>
       <div><b>Current Steps</b><br />
+
         <StepTable
-          Steps={steps}
+          steps={steps}
         />
       </div>
       <span><b>Add Step</b></span><br />
       <SetLanguage
-        Input={false}
-        AddStep={addStep}
+        input={false}
+        addStep={addStep}
       />
     </div>
   )
