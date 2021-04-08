@@ -8,7 +8,7 @@ const SetLanguage = (props: any) => {
   const [lang, setLang] = useState("") //the selected language
   const [code, setCode] = useState("")
   const [shown, setShown] = useState(false)
-  let _langlist = []
+  let _langlist: any[] = []
   props.Input===true && _langlist.push({key: "Detect Language ", value: "auto"})
 
   for (const [key, value] of Object.entries(LANGS)) {
@@ -44,8 +44,9 @@ const SetLanguage = (props: any) => {
 
   const animate = useSpring({
     display: "grid",
+    gridAutoFlow: "column",
     gridTemplateColumns: "16.66% 16.66% 16.66% 16.66% 16.66% 16.66%",
-    //gridTemplateRows: "15%", disabled to auto height
+    gridTemplateRows: "5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%",
     //top: '0px',
     opacity: 1,
     //transform: 'translate3d(0,0,0)',
@@ -76,11 +77,13 @@ const SetLanguage = (props: any) => {
           if (last === lang) {
             alert('Cannot translate twice in the row to the same language')
             setLanguage()
+          } else {
+            props.addStep({
+              language: lang,
+              langCode: code,
+            })
+            _langlist = _langlist.filter((lang, i) => _langlist[i]!==lang)
           }
-          lang !== "" && props.addStep({  //a dumb if statement lol
-            language: lang,
-            langCode: code,
-          })
           setLast(lang)
           setLanguage()
         }}
