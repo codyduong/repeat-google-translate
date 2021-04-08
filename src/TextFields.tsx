@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react"
+import { useState } from "react"
 import SetLanguage from "./SetLanguage"
 
 const InputField = (props: any) => {
@@ -10,10 +10,6 @@ const InputField = (props: any) => {
     props.setText(event.target.value) //passes upwards
   }
 
-  const formSubmit = () => {
-    //props.setText
-  }
-
   const style_grid = {
     display: "grid",
     gridTemplateColumns: "50% 50%",
@@ -22,8 +18,8 @@ const InputField = (props: any) => {
     marginRight: "auto",
   }
   const style_outerDivTextArea = {
-    width: "50%",
-    margin: "5px",
+    width: "99%",
+    margin: "1%",
   }
   const style_textArea = {
     display: "inline-block",
@@ -35,11 +31,7 @@ const InputField = (props: any) => {
         Input={true}
         setSelected={setSelected}
       />
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <div style={style_grid}>
         <div style = {style_outerDivTextArea}>
           <textarea
             name="name"
