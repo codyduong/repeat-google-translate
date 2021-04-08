@@ -75,8 +75,12 @@ const SetLanguage = (props: any) => {
         value="Add Step"
         onClick={() => {
           if (last === lang) {
-            alert('Cannot translate twice in the row to the same language')
-            setLanguage()
+            if (lang === "") {
+              alert("No language selected")
+            } else {
+              alert('Cannot translate twice in the row to the same language')
+              setLanguage()
+            }
           } else {
             props.addStep({
               language: lang,

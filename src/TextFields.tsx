@@ -24,6 +24,7 @@ const InputField = (props: any) => {
   const style_textArea = {
     display: "inline-block",
     width: "100%",
+    height: "12vh",
   }
   return (
     <> 
