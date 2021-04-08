@@ -1,5 +1,5 @@
 import { useState } from "react"
-import InputField from "./InputField"
+import InputField from "./TextFields"
 import LanguageForm from "./LanguageForm"
 
 const _styling = {
@@ -17,15 +17,6 @@ const Main = () => {
 			<div style={{display:"flexbox"}}>
 				<InputField
 					setText={setText}
-				/>
-				<textarea
-					disabled={true}
-					placeholder="Translation"
-					value={text}
-					style={{
-						display: "inline-block",
-						width: "50%",
-					}}
 				/>
 			</div>
 			<LanguageForm 

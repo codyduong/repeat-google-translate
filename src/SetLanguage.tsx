@@ -5,7 +5,8 @@ const LANGS = require('./languages.json')
 
 const SetLanguage = (props: any) => {
   const [last, setLast] = useState("") //the priorly selected language
-  const [selected, setSelected] = useState("") //the selected language
+  const [lang, setLang] = useState("") //the selected language
+  const [code, setCode] = useState("")
   const [shown, setShown] = useState(false)
   let _langlist = []
   props.Input===true && _langlist.push({key: "Detect Language ", value: "auto"})
@@ -14,13 +15,18 @@ const SetLanguage = (props: any) => {
     _langlist.push({key, value})
     //console.log(`${key}: ${value}`);
   }
+
+  const setLanguage = (lang: string = "", code: string = "") => {
+    lang!=="" ? setLang(lang) : setLang("")
+    code!=="" ? setCode(code) : setLang("")
+  }
   
   const _gridElement = {}
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
-      setSelected(key + ' [' + value + ']')
+      setLanguage(key, ''+value)
       if (props.input===true) {
-        props.setSelected(key + ' [' + value + ']')
+        props.setSelected(key)
       }
     }
 
@@ -54,7 +60,7 @@ const SetLanguage = (props: any) => {
   
   return (
     <div>
-      Translate {props.input===false ? "to" : "from"}: {selected} 
+      Translate {props.input===false ? "to" : "from"}: {lang} 
       <input
         style={{zIndex: 1}}
         type="button"
@@ -67,16 +73,16 @@ const SetLanguage = (props: any) => {
         type="button"
         value="Add Step"
         onClick={() => {
-          if (last === selected) {
-            alert('Cannot translate twice in the row to the same language');
-            setSelected("");
+          if (last === lang) {
+            alert('Cannot translate twice in the row to the same language')
+            setLanguage()
           }
-          selected !== "" && props.addStep({  //a dumb if statement lol
-            language: selected,
-            other: "lol",
+          lang !== "" && props.addStep({  //a dumb if statement lol
+            language: lang,
+            langCode: code,
           })
-          setLast(selected)
-          setSelected("")
+          setLast(lang)
+          setLanguage()
         }}
       /> : null}
       <animated.div style={animate}>

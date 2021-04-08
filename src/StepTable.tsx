@@ -4,6 +4,12 @@ const StepTable = (props: any) => {
     return (
       <div key={index}>
         {row.language}
+        <button 
+          key = {row.language}
+          onClick = {() => {props.removeStep(index)}}
+        >
+          X
+        </button>
       </div>
     )
   })
