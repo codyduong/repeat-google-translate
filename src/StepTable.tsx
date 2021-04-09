@@ -20,12 +20,13 @@ const StepTable = (props: any) => {
     )
   })
 
-  console.log(table_content)
 
-  return (
+  return table_content.length !== 0 ? (
     <table>
       {table_content}
     </table>
+  ) : (
+    <>No steps</>
   )
 }
 
