@@ -20,7 +20,7 @@ const LanguageField = () => {
   }
 
   const onSubmitTranslate = () => {
-    (steps.length===0) ? alert("No steps loser") : alert("Loser")
+    (steps.length===0) ? alert("No steps") : alert("WIP")
   }
   const _width = useWindowDimensions().width
   const style_stepTable = useSpring({
