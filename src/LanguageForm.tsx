@@ -3,6 +3,7 @@ import SetLanguage from "./SetLanguage"
 import StepTable from "./StepTable"
 import { useSpring, animated } from "react-spring"
 import "./LanguageForm.css"
+import useWindowDimensions from "./useWindowDimensions"
 
 const LanguageField = () => {
   const [steps, setSteps] = useState<object[]>([])
@@ -21,16 +22,19 @@ const LanguageField = () => {
   const onSubmitTranslate = () => {
     (steps.length===0) ? alert("No steps loser") : alert("Loser")
   }
-
+  const _width = useWindowDimensions().width
   const style_stepTable = useSpring({
-    overflow: "hidden",
+    //overflow: "hidden",
     opacity: 1,
-    maxHeight: '100em',
+    maxHeight: _width <= 992 ? (_width <= 600 ? "5em" : "10em") : "30em",
     from: { opacity: 0, maxHeight: '0em'},
     reset: false,
     zIndex: -1,
     delay: 0,
     reverse: !stepsShown,
+    config: {
+      clamp: true //this removes overshooting
+    }
   })
 
   return (
@@ -41,19 +45,21 @@ const LanguageField = () => {
             setStepsShown(!stepsShown)
           }}
         >
-          {stepsShown===true ? "Hide" : "Show"}
+          {stepsShown===true ? "Hide ▲" : "Show ▼"}
         </button>
         <button
           onClick = {() => onSubmitTranslate()}
         >
           Translate Steps
         </button>
-        <animated.div style={style_stepTable}>
-          <StepTable
-            steps={steps}
-            removeStep={removeStep}
-          />
-        </animated.div>
+        <div className="scrollstep_outer">
+          <animated.div className="scrollstep_inner" style={style_stepTable}>
+            <StepTable
+              steps={steps}
+              removeStep={removeStep}
+            />
+          </animated.div>
+        </div>
       </div>
       <div style={{display: "inline-block"}}>
         <span><b>Add Step</b></span><br />

@@ -1,13 +1,17 @@
+:root {
+  --row: 5.26315789474%;
+} 
+
 .langgrid {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
-  grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
+  grid-template-rows: var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row);
 }
 
 @media screen and (max-width: 600px) {
   .langgrid {
     grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
+    grid-template-rows: var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row);
   }
 }

@@ -1,6 +1,5 @@
-const StepTable = (props: any) => {
-  
-  const test = props.steps.map((row: any, index: any) => {
+const StepTable = (props: any) => { 
+  const table_content = props.steps.map((row: any, index: any) => {
     return (
       <tr key={index}>
         <td style={{width: "12em"}}>
@@ -21,9 +20,11 @@ const StepTable = (props: any) => {
     )
   })
 
+  console.log(table_content)
+
   return (
     <table>
-      {test}
+      {table_content}
     </table>
   )
 }

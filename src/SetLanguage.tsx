@@ -23,7 +23,8 @@ const SetLanguage = (props: any) => {
   }
   
   const style_gridElement = {
-    justifySelf: "stretch"
+    justifySelf: "stretch",
+    textOverflow: "hidden",
   }
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
@@ -54,8 +55,9 @@ const SetLanguage = (props: any) => {
     delay: 0,
     reverse: !shown,
     overflow: 'hidden',
-    maxHeight: '100em',
-    from: { opacity: 0, maxHeight: '0em'},
+    height: "30em",
+    maxHeight: '100%',
+    from: { opacity: 0, height: '0em'},
   })
   
   return (
