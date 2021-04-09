@@ -10,7 +10,7 @@ const SetLanguage = (props: any) => {
   const [code, setCode] = useState("")
   const [shown, setShown] = useState(false)
   let _langlist: any[] = []
-  props.Input===true && _langlist.push({key: "Detect Language ", value: "auto"})
+  props.input===true && _langlist.push({key: "Detect Language ", value: "auto"})
 
   for (const [key, value] of Object.entries(LANGS)) {
     _langlist.push({key, value})
@@ -25,11 +25,12 @@ const SetLanguage = (props: any) => {
   const style_gridElement = {
     justifySelf: "stretch",
     textOverflow: "hidden",
-    zIndex: props.input!==true ? 1 : -1,
+    zIndex: props.input ? 2: 1,
   }
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
       setLanguage(key, ''+value)
+      setShown(false)
       if (props.input===true) {
         props.setSelected(key)
       }

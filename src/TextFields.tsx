@@ -15,7 +15,7 @@ const TextFields = (props: any) => {
     <> 
       <div className="hiddenOverFlowSelect">
         <SetLanguage
-          Input={true}
+          input={true}
           setSelected={setSelected}
         />
       </div>
