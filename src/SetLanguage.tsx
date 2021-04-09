@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSpring, animated } from "react-spring"
+import "./SetLanguage.css"
 
 const LANGS = require('./languages.json')
 
@@ -21,7 +22,9 @@ const SetLanguage = (props: any) => {
     code!=="" ? setCode(code) : setLang("")
   }
   
-  const _gridElement = {}
+  const style_gridElement = {
+    justifySelf: "stretch"
+  }
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
       setLanguage(key, ''+value)
@@ -33,7 +36,7 @@ const SetLanguage = (props: any) => {
     return (
       <button 
         key = {key}
-        style = {_gridElement}
+        style = {style_gridElement}
         onClick = {() => _onClickFunc()}
         disabled = {!shown}
       >
@@ -43,10 +46,6 @@ const SetLanguage = (props: any) => {
   })
 
   const animate = useSpring({
-    display: "grid",
-    gridAutoFlow: "column",
-    gridTemplateColumns: "16.66% 16.66% 16.66% 16.66% 16.66% 16.66%",
-    gridTemplateRows: "5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%",
     //top: '0px',
     opacity: 1,
     //transform: 'translate3d(0,0,0)',
@@ -92,7 +91,7 @@ const SetLanguage = (props: any) => {
           setLanguage()
         }}
       /> : null}
-      <animated.div style={animate}>
+      <animated.div className="langgrid" style={animate}>
         {gridElements}
       </animated.div>
     </div>
