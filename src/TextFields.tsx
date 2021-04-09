@@ -1,7 +1,8 @@
 import { useState } from "react"
 import SetLanguage from "./SetLanguage"
+import "./TextFields.css"
 
-const InputField = (props: any) => {
+const TextFields = (props: any) => {
   const [text, setText] = useState("")
   const [selected, setSelected] = useState("")
 
@@ -10,46 +11,30 @@ const InputField = (props: any) => {
     props.setText(event.target.value) //passes upwards
   }
 
-  const style_grid = {
-    display: "grid",
-    gridTemplateColumns: "50% 50%",
-    gridColumnGap: "5px",
-    marginLeft: "auto",
-    marginRight: "auto",
-  }
-  const style_outerDivTextArea = {
-    width: "99%",
-    margin: "1%",
-  }
-  const style_textArea = {
-    display: "inline-block",
-    width: "100%",
-    height: "12vh",
-  }
   return (
     <> 
-      <SetLanguage
-        Input={true}
-        setSelected={setSelected}
-      />
-      <div style={style_grid}>
-        <div style = {style_outerDivTextArea}>
+      <div className="hiddenOverFlowSelect">
+        <SetLanguage
+          Input={true}
+          setSelected={setSelected}
+        />
+      </div>
+      <div className="textgrid">
+        <div className="textareasurround">
           <textarea
             name="name"
             id="name"
             maxLength={5000}
             onChange={handleChange}
             placeholder={props.placeholderText ?? ""}
-            style={style_textArea}
           />
           {text.length}/5000
         </div>
-        <div style = {style_outerDivTextArea}>
+        <div className="textareasurround">
           <textarea
             disabled={true}
             placeholder="Translation"
             value={text}
-            style={style_textArea}
           />
         </div>
       </div>
@@ -58,4 +43,4 @@ const InputField = (props: any) => {
 
 }
 
-export default InputField
+export default TextFields
