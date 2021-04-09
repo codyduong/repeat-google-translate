@@ -75,22 +75,21 @@ const SetLanguage = (props: any) => {
         type="button"
         value="Add Step"
         onClick={() => {
-          if (last === lang) {
-            if (lang === "") {
-              alert("No language selected")
-            } else {
-              alert('Cannot translate twice in the row to the same language')
-              setLanguage()
-            }
+          if (lang === "") {
+            alert("No language selected")
+          }
+          else if (last === lang) {
+            alert('Cannot translate twice in the row to the same language')
+            setLanguage()
           } else {
             props.addStep({
               language: lang,
               langCode: code,
             })
             _langlist = _langlist.filter((lang, i) => _langlist[i]!==lang)
+            setLast(lang)
+            setLanguage()
           }
-          setLast(lang)
-          setLanguage()
         }}
       /> : null}
       <animated.div className="langgrid" style={animate}>
