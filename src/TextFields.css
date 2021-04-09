@@ -1,18 +1,37 @@
+.hiddenOverFlowSelect {
+  height: 2em;
+  overflow: visible;
+}
+
 .textgrid {
   display: grid;
   grid-template-columns: 49.5% 49.5%;
-  grid-column-gap: 1%;
+  column-gap: 1%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .textareasurround {
-  width: 100%;
+  justify-self: stretch;
 }
 
 textarea {
   display: inline-block;
-  width: 100%;
+  width: calc(100% - 6px);
   height: 12vh;
+  resize: none;
 }
 
+@media screen and (max-width: 992) {
+  .textgrid {
+    grid-template-columns: 49% 49%;
+    column-gap: 2%;
+  }
+}
+
+@media screen and (max-width: 600) {
+  .textgrid {
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
+  }
+}

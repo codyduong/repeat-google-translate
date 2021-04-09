@@ -25,6 +25,7 @@ const SetLanguage = (props: any) => {
   const style_gridElement = {
     justifySelf: "stretch",
     textOverflow: "hidden",
+    zIndex: props.input!==true ? 1 : -1,
   }
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
@@ -51,7 +52,6 @@ const SetLanguage = (props: any) => {
     opacity: 1,
     //transform: 'translate3d(0,0,0)',
     reset: false,
-    zIndex: -1,
     delay: 0,
     reverse: !shown,
     overflow: 'hidden',
@@ -59,7 +59,7 @@ const SetLanguage = (props: any) => {
     maxHeight: '100%',
     from: { opacity: 0, height: '0em'},
   })
-  
+
   return (
     <div>
       Translate {props.input===false ? "to" : "from"}: {lang} 
