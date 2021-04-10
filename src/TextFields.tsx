@@ -22,8 +22,7 @@ const TextFields = (props: any) => {
       <div className="textgrid">
         <div className="textareasurround">
           <textarea
-            name="name"
-            id="name"
+            name="Input Text"
             maxLength={5000}
             onChange={handleChange}
             placeholder={props.placeholderText ?? ""}
@@ -32,6 +31,7 @@ const TextFields = (props: any) => {
         </div>
         <div className="textareasurround">
           <textarea
+            name="Translated Result"
             disabled={true}
             placeholder="Translation"
             value={text}

@@ -30,8 +30,8 @@ const SetLanguage = (props: any) => {
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
       setLanguage(key, ''+value)
-      setShown(false)
       if (props.input===true) {
+        setShown(false)
         props.setSelected(key)
       }
     }
