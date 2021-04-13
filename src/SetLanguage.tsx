@@ -44,8 +44,8 @@ const SetLanguage = (props: any) => {
         onClick = {() => _onClickFunc()}
         disabled = {
           shown ? (
-            props.steps ? (
-              props.steps[props.steps.length - 1]?.language === key
+            steps ? (
+              steps[steps.length - 1]?.language === key
             ) : false
           ) : true
         }
@@ -87,7 +87,7 @@ const SetLanguage = (props: any) => {
           if (lang === "") {
             alert("No language selected")
           }
-          else if (props.steps[props.steps.length-1]?.language === lang) {
+          else if (steps[steps.length-1]?.language === lang) {
             alert('Cannot translate twice in the row to the same language')
             setLanguage()
           } else {
