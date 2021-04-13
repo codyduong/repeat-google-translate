@@ -1,30 +1,30 @@
+import "./StepTable.css"
+
 const StepTable = (props: any) => { 
   const table_content = props.steps.map((row: any, index: any) => {
     return (
-      <tr key={index}>
-        <td style={{width: "12em"}}>
+      <div key={index} className="outer-step-table">
+        <div className="inline-div">
           {row.language}
-        </td>
-        <td>
+        </div>
+        <div className="inline-div">
           {row.langCode}
-        </td>
-        <td>
-          <button
-            key={row.language}
-            onClick={() => { props.removeStep(index) }}
-          >
-            X
+        </div>
+        <button
+          key={row.language}
+          onClick={() => { props.removeStep(index) }}
+        >
+          X
         </button>
-        </td>
-      </tr>
+      </div >
     )
   })
 
 
   return table_content.length !== 0 ? (
-    <table>
+    <div className="faketable">
       {table_content}
-    </table>
+    </div>
   ) : (
     <>No steps</>
   )

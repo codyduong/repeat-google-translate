@@ -27,7 +27,7 @@ const LanguageField = () => {
   const style_stepTable = useSpring({
     //overflow: "hidden",
     opacity: 1,
-    maxHeight: _width <= 992 ? (_width <= 600 ? "5em" : "10em") : "30em",
+    maxHeight: _width <= 992 ? (_width <= 600 ? "30em" : "30em") : "30em",
     from: { opacity: 0, maxHeight: '0em'},
     reset: false,
     zIndex: -1,
@@ -53,14 +53,12 @@ const LanguageField = () => {
         >
           Translate Steps
         </button>
-        <div className="scrollstep_outer">
-          <animated.div className="scrollstep_inner" style={style_stepTable}>
-            <StepTable
-              steps={steps}
-              removeStep={removeStep}
-            />
-          </animated.div>
-        </div>
+        <animated.div style={style_stepTable}>
+          <StepTable
+            steps={steps}
+            removeStep={removeStep}
+          />
+        </animated.div>
       </div>
       <div style={{display: "inline-block"}}>
         <span><b>Add Step</b></span><br />

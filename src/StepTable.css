@@ -1,0 +1,40 @@
+:root {
+  --row: 1.5em;
+  --col: 5%;
+} 
+
+.faketable {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 100%;
+  max-height: 28.5em;
+  overflow-y: scroll;
+}
+
+.outer-step-table {
+  display: grid;
+  grid-template-columns: 9.5em 3em 1.5em
+}
+
+.inline-div {
+  display: inline-block;
+  height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 992px) {
+  .faketable {
+    max-width: auto;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+  }
+  .outer-step-table {
+    transform: rotate(-45deg);
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+}

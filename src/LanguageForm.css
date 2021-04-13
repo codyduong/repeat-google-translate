@@ -3,11 +3,6 @@
   grid-template-columns: 15em auto;
 }
 
-.scrollstep_outer {
-  overflow-y: scroll;
-  width: 15em;
-}
-
 @media screen and (max-width: 992px) {
   .grid {
     grid-template-columns: 100%;
