@@ -11,6 +11,7 @@ const StepTable = (props: any) => {
           {row.langCode}
         </div>
         <button
+          style={{height: "1.5em"}}
           key={row.language}
           onClick={() => { props.removeStep(index) }}
         >
