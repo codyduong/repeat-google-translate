@@ -33,25 +33,42 @@
     max-width: 100%;
     /*
     15em is the width + 1em for the scroll-x bar
-    height = (sin(angle) * -14 + 2.5)
+    height = (sin(angle) * -14 + 2.5) + (cos(x)*1.5 - 1.5)
     */
     height: 12.4em;
     grid-auto-flow: column;
     grid-template-rows: 80%;
-    grid-auto-columns: 1.5em;
-    grid-template-columns: 1.5em;
+    grid-auto-columns: 1.75em;
+    grid-template-columns: 1.75em;
   }
   .outer-step-table {
-    transform-origin: 100% 0%;
+    transform-origin: 0% 100%;
     /*14em is width of outer-step-table*/
     /*
     Rotation angle is advised to be between (-45 and 45)
     x = (cos(angle) * 14 ) - 14
     */
-    transform: translate(-4.1em, 0em) rotate(-45deg);  
+    transform: translate(0em, 0em) rotate(45deg);  
   }
 }
 
 @media screen and (max-width: 600px) {
-
+  .faketable {
+    grid-auto-columns: 1.5em;
+    grid-template-columns: 1.5em;
+    /*
+    15em is the width + 1em for the scroll-x bar
+    height = (sin(angle) * -14 + 2.5)
+    */
+    height: 15.5em;
+  }
+  .outer-step-table {
+    transform-origin: 0% 100%;
+    /*14em is width of outer-step-table*/
+    /*
+    Rotation angle is advised to be between (-45 and 45)
+    x = (cos(angle) * 14 ) - 14
+    */
+    transform: translate(0em, -1em) rotate(90deg);  
+  }
 }
