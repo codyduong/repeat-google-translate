@@ -4,9 +4,10 @@ import StepTable from "./StepTable"
 import { useSpring, animated } from "react-spring"
 import "./LanguageForm.css"
 import useWindowDimensions from "./useWindowDimensions"
+import stepInterface from "./Interfaces/stepInterface"
 
 const LanguageField = () => {
-  const [steps, setSteps] = useState<object[]>([])
+  const [steps, setSteps] = useState<stepInterface[]>([])
   const [stepsShown, setStepsShown] = useState(true)
 
   const removeStep = (index: Number) => {
@@ -65,6 +66,7 @@ const LanguageField = () => {
         <span><b>Add Step</b></span><br />
         <SetLanguage
           input={false}
+          steps={steps}
           addStep={addStep}
         />
       </div>

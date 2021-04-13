@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useSpring, animated } from "react-spring"
 import "./SetLanguage.css"
+import stepInterface from "./Interfaces/stepInterface"
 
 const LANGS = require('./languages.json')
 
 const SetLanguage = (props: any) => {
-  const [last, setLast] = useState("") //the priorly selected language
+  const steps = props.steps
   const [lang, setLang] = useState("") //the selected language
   const [code, setCode] = useState("")
   const [shown, setShown] = useState(false)
@@ -25,7 +26,7 @@ const SetLanguage = (props: any) => {
   const style_gridElement = {
     justifySelf: "stretch",
     textOverflow: "hidden",
-    zIndex: props.input ? 2: 1,
+    zIndex: props.input ? 2 : 1,
   }
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
@@ -41,7 +42,13 @@ const SetLanguage = (props: any) => {
         key = {key}
         style = {style_gridElement}
         onClick = {() => _onClickFunc()}
-        disabled = {!shown}
+        disabled = {
+          shown ? (
+            props.steps ? (
+              props.steps[props.steps.length - 1]?.language === key
+            ) : false
+          ) : true
+        }
       >
         {key}
       </button>
@@ -75,11 +82,12 @@ const SetLanguage = (props: any) => {
       {props.input===false ? <input
         type="button"
         value="Add Step"
+        disabled= {lang===""} 
         onClick={() => {
           if (lang === "") {
             alert("No language selected")
           }
-          else if (last === lang) {
+          else if (props.steps[props.steps.length-1]?.language === lang) {
             alert('Cannot translate twice in the row to the same language')
             setLanguage()
           } else {
@@ -88,7 +96,7 @@ const SetLanguage = (props: any) => {
               langCode: code,
             })
             _langlist = _langlist.filter((lang, i) => _langlist[i]!==lang)
-            setLast(lang)
+            //setLast(lang)
             setLanguage()
           }
         }}
