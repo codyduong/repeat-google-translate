@@ -1,0 +1,33 @@
+.Footer {
+  margin: 5px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.FooterButton {
+  display: flex;
+  justify-content: center;
+  width: 8em;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #696969;
+}
+
+.FooterSrcLink {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+.FooterSrcLink:link, .FooterSrcLink:visited {
+  color: black
+}
+.FooterSrcLink:hover {
+  background-color: #cfcfcf;
+}
+/* .FooterSrcLink:active {
+
+} */

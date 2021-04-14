@@ -1,0 +1,11 @@
+.Header {
+  display: grid;
+  grid-template-columns: auto 3em;
+  align-items: baseline;
+}
+
+.HeaderTitle {
+  margin: 0px;
+  margin-block-start: 5px;
+  margin-block-end: 5px;
+}
