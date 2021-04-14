@@ -29,7 +29,7 @@ const Main = () => {
 	
 	return (
 		<ThemeContext.Provider value={{theme: theme, toggleTheme: toggleTheme}}>
-			<div style={{backgroundColor: theme.background, color: theme.foreground, height: "100vh", width: "100vw"}}>
+			<div style={{backgroundColor: theme.background, color: theme.foreground, height: "100%", width: "100%"}}>
 				<div style={_styling}>
 					<Header/>
 					<div className="Main">
