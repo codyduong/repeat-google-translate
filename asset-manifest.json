@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/repeat-translate/static/css/main.24460d1b.chunk.css",
-    "main.js": "/repeat-translate/static/js/main.6554617e.chunk.js",
-    "main.js.map": "/repeat-translate/static/js/main.6554617e.chunk.js.map",
-    "runtime-main.js": "/repeat-translate/static/js/runtime-main.8e927a9c.js",
-    "runtime-main.js.map": "/repeat-translate/static/js/runtime-main.8e927a9c.js.map",
-    "static/js/2.3c19d774.chunk.js": "/repeat-translate/static/js/2.3c19d774.chunk.js",
-    "static/js/2.3c19d774.chunk.js.map": "/repeat-translate/static/js/2.3c19d774.chunk.js.map",
-    "static/js/3.20b57b1e.chunk.js": "/repeat-translate/static/js/3.20b57b1e.chunk.js",
-    "static/js/3.20b57b1e.chunk.js.map": "/repeat-translate/static/js/3.20b57b1e.chunk.js.map",
+    "main.css": "/repeat-translate/static/css/main.d0705415.chunk.css",
+    "main.js": "/repeat-translate/static/js/main.b20b917c.chunk.js",
+    "main.js.map": "/repeat-translate/static/js/main.b20b917c.chunk.js.map",
+    "runtime-main.js": "/repeat-translate/static/js/runtime-main.db5d4c1f.js",
+    "runtime-main.js.map": "/repeat-translate/static/js/runtime-main.db5d4c1f.js.map",
+    "static/js/2.9810a785.chunk.js": "/repeat-translate/static/js/2.9810a785.chunk.js",
+    "static/js/2.9810a785.chunk.js.map": "/repeat-translate/static/js/2.9810a785.chunk.js.map",
+    "static/js/3.5912b299.chunk.js": "/repeat-translate/static/js/3.5912b299.chunk.js",
+    "static/js/3.5912b299.chunk.js.map": "/repeat-translate/static/js/3.5912b299.chunk.js.map",
     "index.html": "/repeat-translate/index.html",
-    "static/css/main.24460d1b.chunk.css.map": "/repeat-translate/static/css/main.24460d1b.chunk.css.map",
-    "static/js/2.3c19d774.chunk.js.LICENSE.txt": "/repeat-translate/static/js/2.3c19d774.chunk.js.LICENSE.txt"
+    "static/css/main.d0705415.chunk.css.map": "/repeat-translate/static/css/main.d0705415.chunk.css.map",
+    "static/js/2.9810a785.chunk.js.LICENSE.txt": "/repeat-translate/static/js/2.9810a785.chunk.js.LICENSE.txt",
+    "static/media/github.16a9304e.svg": "/repeat-translate/static/media/github.16a9304e.svg",
+    "static/media/themebuttonmoon.3fce6a06.svg": "/repeat-translate/static/media/themebuttonmoon.3fce6a06.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8e927a9c.js",
-    "static/js/2.3c19d774.chunk.js",
-    "static/css/main.24460d1b.chunk.css",
-    "static/js/main.6554617e.chunk.js"
+    "static/js/runtime-main.db5d4c1f.js",
+    "static/js/2.9810a785.chunk.js",
+    "static/css/main.d0705415.chunk.css",
+    "static/js/main.b20b917c.chunk.js"
   ]
 }
