@@ -18,7 +18,6 @@ const Main = () => {
 		} else {
 			setTheme(themes.light)
 		}
-		console.log(theme)
 	}
 
 	const _styling = {

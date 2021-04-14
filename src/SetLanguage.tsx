@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useSpring, animated } from "react-spring"
 import "./SetLanguage.css"
-import stepInterface from "./Interfaces/stepInterface"
 
 const LANGS = require('./languages.json')
 
