@@ -15,8 +15,12 @@ const Main = () => {
 	const toggleTheme = () => {
 		if (theme===themes.light) {
 			setTheme(themes.dark)
+			document.body.style.backgroundColor = themes.dark.background
+			document.body.style.color = themes.dark.foreground
 		} else {
 			setTheme(themes.light)
+			document.body.style.backgroundColor = themes.light.background
+			document.body.style.color = themes.light.foreground
 		}
 	}
 
