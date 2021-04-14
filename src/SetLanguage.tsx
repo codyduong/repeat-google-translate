@@ -65,7 +65,7 @@ const SetLanguage = (props: any) => {
     overflow: 'hidden',
     height: "30em",
     maxHeight: '100%',
-    from: { opacity: 0, height: '0em'},
+    from: { height: '0em'},
   })
 
   return (
