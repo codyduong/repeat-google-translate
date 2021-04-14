@@ -23,8 +23,8 @@ const ThemeButton = () => {
         <div
           className="ThemeButtonRect"
           style={{
-            backgroundColor: isDark ? "var(--bgDark)" : "",
-            borderColor: isDark ? "var(--borderDark)" : "",
+            backgroundColor: isDark ? "var(--bgDark)" : theme.background,
+            borderColor: isDark ? "var(--borderDark)" : "gray",
           }}
           onClick={() => {
             toggleTheme()
