@@ -1,8 +1,8 @@
 :root {
   --bgLite: ;
-  --bgDark: #41344a;
+  --bgDark: hsl(275, 15%, 25%);
   --borderLite: ;
-  --borderDark: #74508c;
+  --borderDark: hsl(275, 15%, 50%);
   --buttonLite: ;
   --buttonDark: ;
 }

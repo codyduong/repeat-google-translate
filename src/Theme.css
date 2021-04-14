@@ -1,0 +1,6 @@
+.root {
+  --light_foreground: hsl(0, 0%, 0%);
+  --light_background: hsl(240, 10%, 100%);
+  --dark_foreground: hsl(0, 0%, 75%);
+  --dark_background: hsl(216, 28%, 7%);
+}

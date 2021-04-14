@@ -2,6 +2,7 @@ import "./ThemeButton.css"
 import { useState } from "react"
 import { animated, useSpring } from "react-spring"
 import { ReactComponent as Moon } from "./themebuttonmoon.svg"
+import { ThemeContext } from "./Theme"
 
 const ThemeButton = () => {
   const [isDark, setIsDark] = useState(false)
@@ -16,33 +17,37 @@ const ThemeButton = () => {
     reset: false,
   })
 
-
   return (
-    <div 
-      className="ThemeButtonRect" 
-      style={{
-        backgroundColor: isDark ? "var(--bgDark)" : "",
-        borderColor: isDark? "var(--borderDark)" : "",
-      }}
-      onClick={() => {
-        setIsDark(!isDark)
-        }
-      }
-    >
-      <div className="ThemeButtonOuter">
-        <animated.div
-          className="ThemeButtonButton"
-          style={animate}
+    <ThemeContext.Consumer>
+      {({theme, toggleTheme}) => (
+        <div
+          className="ThemeButtonRect"
+          style={{
+            backgroundColor: isDark ? "var(--bgDark)" : "",
+            borderColor: isDark ? "var(--borderDark)" : "",
+          }}
+          onClick={() => {
+            toggleTheme()
+            setIsDark(!isDark)
+          }
+          }
         >
-          <Moon
-            width={16}
-            height={16}
-            fill={isDark ? "white" : "yellow"}
-          />
-        </animated.div>
-      </div>
-    </div>
-  )
+          <div className="ThemeButtonOuter">
+            <animated.div
+              className="ThemeButtonButton"
+              style={animate}
+            >
+              <Moon
+                width={16}
+                height={16}
+                fill={isDark ? "white" : "yellow"}
+              />
+            </animated.div>
+          </div>
+        </div>
+      )}
+    </ThemeContext.Consumer>
+    )
 }
 
 export default ThemeButton
