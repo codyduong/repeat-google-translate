@@ -1,6 +1,6 @@
 {
-  "name": "repeat-translate",
-  "homepage": "https://codyduong.github.io/repeat-translate/",
+  "name": "repeat-google-translate",
+  "homepage": "https://codyduong.github.io/repeat-google-translate/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
