@@ -7,7 +7,7 @@ import useWindowDimensions from "./useWindowDimensions"
 import stepInterface from "./Interfaces/stepInterface"
 import { ThemeContext } from "./Theme"
 
-const LanguageField = () => {
+const LanguageField = (props: any) => {
   const [steps, setSteps] = useState<stepInterface[]>([])
   const [stepsShown, setStepsShown] = useState(true)
 
@@ -17,8 +17,8 @@ const LanguageField = () => {
 
   const addStep = (step: any) => {
     setSteps([...steps, step])
+    props.setSteps([...steps, step])
     // console.log('Added step ' + step.language)
-    // console.log(steps)
   }
 
   const onSubmitTranslate = () => {

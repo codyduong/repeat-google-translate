@@ -5,7 +5,6 @@ import { ThemeContext } from "./Theme"
 
 const TextFields = (props: any) => {
   const [text, setText] = useState("")
-  const [selected, setSelected] = useState("")
 
   const handleChange = (event: any) => {
     setText(event.target.value)
@@ -17,7 +16,7 @@ const TextFields = (props: any) => {
       <div className="hiddenOverFlowSelect">
         <SetLanguage
           input={true}
-          setSelected={setSelected}
+          setSelected={props.setSelected}
         />
       </div>
       <ThemeContext.Consumer>
@@ -39,7 +38,7 @@ const TextFields = (props: any) => {
                 disabled={true}
                 placeholder="Translation"
                 style={{backgroundColor: theme.textarea, color: theme.foreground}}
-                value={text}
+                value={props.translated}
               />
             </div>
           </div>

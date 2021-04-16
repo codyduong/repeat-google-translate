@@ -29,7 +29,7 @@ const SetLanguage = (props: any) => {
       setLanguage(key, ''+value)
       if (props.input===true) {
         setShown(false)
-        props.setSelected(key)
+        props.setSelected({language: key, language_code: value})
       }
     }
 
