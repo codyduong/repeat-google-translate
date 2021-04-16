@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSpring, animated } from "react-spring"
 import "./SetLanguage.css"
 import { ThemeContext, themes } from "./Theme"
@@ -7,11 +7,12 @@ const LANGS = require('./languages.json')
 
 const SetLanguage = (props: any) => {
   const steps = props.steps
-  const [lang, setLang] = useState("") //the selected language
-  const [code, setCode] = useState("")
-  const [shown, setShown] = useState(false)
+  const [lang, setLang] = useState<string>(props.input ? "Detect Language" : "") //the selected language
+  const [code, setCode] = useState<string>(props.input ? "auto" : "")
+  const [shown, setShown] = useState<boolean>(props.input ? false : true)
+  const [isInit, setIsInit] = useState<boolean>(props.input ? false : true)
   let _langlist: any[] = []
-  props.input===true && _langlist.push({key: "Detect Language ", value: "auto"})
+  props.input===true && _langlist.push({key: "Detect Language", value: "auto"})
 
   for (const [key, value] of Object.entries(LANGS)) {
     _langlist.push({key, value})
@@ -37,6 +38,9 @@ const SetLanguage = (props: any) => {
         steps[steps.length - 1]?.language === key
       ) : false
     ) : true
+    let __ = shown ? (
+      lang === key
+    ) : false
 
     return (
       <ThemeContext.Consumer>
@@ -44,7 +48,12 @@ const SetLanguage = (props: any) => {
           <button
             key={key}
             className="SetLangaugeButton"
-            style={{ zIndex: props.input ? 2 : 1, backgroundColor: theme.button, color: theme.foreground, cursor: _ ? "not-allowed" : "pointer"}}
+            style={{ 
+              zIndex: props.input ? 2 : 1, 
+              backgroundColor: theme.button, 
+              color: !__ ? theme.foreground : theme.selectedText, 
+              cursor: _ ? "not-allowed" : "pointer"
+            }}
             onClick={() => _onClickFunc()}
             disabled={_}
           >
@@ -55,15 +64,19 @@ const SetLanguage = (props: any) => {
     )
   })
 
+  useEffect(() => {
+    setIsInit(true)
+  }, []);
+
   const animate = useSpring({
-    opacity: 1,
+    opacity: isInit ? 1 : 0,
     reset: false,
     delay: 0,
     reverse: !shown,
     overflow: 'hidden',
-    height: "30em",
+    height: isInit ? '30em' : '0em',
     maxHeight: '100%',
-    from: { height: '0em'},
+    from: { height: !isInit ? '30em' : '0em'},
   })
 
   return (
@@ -80,7 +93,7 @@ const SetLanguage = (props: any) => {
             }}
           />
           {props.input === false ? <input
-            style={{ borderStyle: "solid", outline: "none", zIndex: 1, backgroundColor: theme.button, color: theme.foreground }}
+            style={{ borderStyle: "solid", outline: "none", zIndex: 1, backgroundColor: theme.button, color: theme.foreground, cursor: lang==="" ? "not-allowed" : "auto" }}
             type="button"
             value="Add Step"
             disabled={lang === ""}

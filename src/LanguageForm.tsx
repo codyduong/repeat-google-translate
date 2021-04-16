@@ -53,8 +53,9 @@ const LanguageField = () => {
               {stepsShown === true ? "Hide ▲" : "Show ▼"}
             </button>
             <button
-              style={{ borderStyle: "solid", backgroundColor: theme.button, color: theme.foreground }}
+              style={{ borderStyle: "solid", backgroundColor: theme.button, color: theme.foreground, cursor: steps.length===0 ? "not-allowed" : "auto"}}
               onClick={() => onSubmitTranslate()}
+              disabled={steps.length===0 ? true : false}
             >
               Translate Steps
           </button>
