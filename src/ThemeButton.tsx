@@ -23,7 +23,7 @@ const ThemeButton = () => {
     if (prop) {
       setCookie('isDark', prop, { path: '/ '})
     } else {
-      removeCookie('isDark')
+      removeCookie('isDark', { path: '/ '})
     }
   }
 
