@@ -19,8 +19,3 @@ npm start
 git init
 npm run deploy
 ```
-
-## Testing
-```
-./node_modules/.bin/cypress open
-```
