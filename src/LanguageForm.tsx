@@ -5,6 +5,7 @@ import { useSpring, animated } from "react-spring"
 import "./LanguageForm.css"
 import useWindowDimensions from "./useWindowDimensions"
 import stepInterface from "./Interfaces/stepInterface"
+import { ThemeContext } from "./Theme"
 
 const LanguageField = () => {
   const [steps, setSteps] = useState<stepInterface[]>([])
@@ -39,36 +40,42 @@ const LanguageField = () => {
   })
 
   return (
-    <div className="grid">
-      <div style={{display: "inline-block"}}><b>Current Steps</b><br />
-        <button
-          onClick = {() => {
-            setStepsShown(!stepsShown)
-          }}
-        >
-          {stepsShown===true ? "Hide ▲" : "Show ▼"}
-        </button>
-        <button
-          onClick = {() => onSubmitTranslate()}
-        >
-          Translate Steps
-        </button>
-        <animated.div style={style_stepTable}>
-          <StepTable
-            steps={steps}
-            removeStep={removeStep}
-          />
-        </animated.div>
-      </div>
-      <div style={{display: "inline-block"}}>
-        <span><b>Add Step</b></span><br />
-        <SetLanguage
-          input={false}
-          steps={steps}
-          addStep={addStep}
-        />
-      </div>
-    </div>
+    <ThemeContext.Consumer>
+      {({ theme }) => (
+        <div className="grid">
+          <div style={{ display: "inline-block" }}><b>Current Steps</b><br />
+            <button
+              style={{ borderStyle: "solid", backgroundColor: theme.button, color: theme.foreground }}
+              onClick={() => {
+                setStepsShown(!stepsShown)
+              }}
+            >
+              {stepsShown === true ? "Hide ▲" : "Show ▼"}
+            </button>
+            <button
+              style={{ borderStyle: "solid", backgroundColor: theme.button, color: theme.foreground }}
+              onClick={() => onSubmitTranslate()}
+            >
+              Translate Steps
+          </button>
+            <animated.div style={style_stepTable}>
+              <StepTable
+                steps={steps}
+                removeStep={removeStep}
+              />
+            </animated.div>
+          </div>
+          <div style={{ display: "inline-block" }}>
+            <span><b>Add Step</b></span><br />
+            <SetLanguage
+              input={false}
+              steps={steps}
+              addStep={addStep}
+            />
+          </div>
+        </div>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

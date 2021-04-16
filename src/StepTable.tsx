@@ -1,4 +1,5 @@
 import "./StepTable.css"
+import { ThemeContext } from "./Theme"
 
 const StepTable = (props: any) => { 
   const table_content = props.steps.map((row: any, index: any) => {
@@ -10,13 +11,17 @@ const StepTable = (props: any) => {
         <div className="inline-div">
           {row.langCode}
         </div>
-        <button
-          style={{height: "1.5em"}}
-          key={row.language}
-          onClick={() => { props.removeStep(index) }}
-        >
-          X
-        </button>
+        <ThemeContext.Consumer>
+          {({ theme }) => (
+            <button
+              style={{ height: "1.5em", cursor: "pointer", backgroundColor: theme.button, color: theme.foreground }}
+              key={row.language}
+              onClick={() => { props.removeStep(index) }}
+            >
+              X
+            </button>
+          )}
+        </ThemeContext.Consumer>
       </div >
     )
   })

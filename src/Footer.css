@@ -25,6 +25,6 @@
 .FooterSrcLink:link, .FooterSrcLink:visited {
   color: black
 }
-.FooterSrcLink:hover {
+/* .FooterSrcLink:hover {
   background-color: #cfcfcf;
-}
+} Replaced with React theming*/

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useSpring, animated } from "react-spring"
 import "./SetLanguage.css"
+import { ThemeContext, themes } from "./Theme"
 
 const LANGS = require('./languages.json')
 
@@ -21,12 +22,7 @@ const SetLanguage = (props: any) => {
     lang!=="" ? setLang(lang) : setLang("")
     code!=="" ? setCode(code) : setLang("")
   }
-  
-  const style_gridElement = {
-    justifySelf: "stretch",
-    textOverflow: "hidden",
-    zIndex: props.input ? 2 : 1,
-  }
+
   const gridElements = _langlist.map(({key, value}) => {
     const _onClickFunc = () => {
       setLanguage(key, ''+value)
@@ -36,28 +32,31 @@ const SetLanguage = (props: any) => {
       }
     }
 
+    let _ = shown ? (
+      steps ? (
+        steps[steps.length - 1]?.language === key
+      ) : false
+    ) : true
+
     return (
-      <button 
-        key = {key}
-        style = {style_gridElement}
-        onClick = {() => _onClickFunc()}
-        disabled = {
-          shown ? (
-            steps ? (
-              steps[steps.length - 1]?.language === key
-            ) : false
-          ) : true
-        }
-      >
-        {key}
-      </button>
+      <ThemeContext.Consumer>
+        {({ theme }) => (
+          <button
+            key={key}
+            className="SetLangaugeButton"
+            style={{ zIndex: props.input ? 2 : 1, backgroundColor: theme.button, color: theme.foreground, cursor: _ ? "not-allowed" : "pointer"}}
+            onClick={() => _onClickFunc()}
+            disabled={_}
+          >
+            {key}
+          </button>
+        )}
+      </ThemeContext.Consumer>
     )
   })
 
   const animate = useSpring({
-    //top: '0px',
     opacity: 1,
-    //transform: 'translate3d(0,0,0)',
     reset: false,
     delay: 0,
     reverse: !shown,
@@ -68,42 +67,47 @@ const SetLanguage = (props: any) => {
   })
 
   return (
-    <div>
-      Translate {props.input===false ? "to" : "from"}: {lang} 
-      <input
-        style={{zIndex: 1}}
-        type="button"
-        value={!shown ? "▼" : "▲"}
-        onClick={() => {
-          setShown(!shown)
-        }}
-      />
-      {props.input===false ? <input
-        type="button"
-        value="Add Step"
-        disabled= {lang===""} 
-        onClick={() => {
-          if (lang === "") {
-            alert("No language selected")
-          }
-          else if (steps[steps.length-1]?.language === lang) {
-            alert('Cannot translate twice in the row to the same language')
-            setLanguage()
-          } else {
-            props.addStep({
-              language: lang,
-              langCode: code,
-            })
-            _langlist = _langlist.filter((lang, i) => _langlist[i]!==lang)
-            //setLast(lang)
-            setLanguage()
-          }
-        }}
-      /> : null}
-      <animated.div className="langgrid" style={animate}>
-        {gridElements}
-      </animated.div>
-    </div>
+    <ThemeContext.Consumer>
+      {({ theme }) => (
+        <div>
+          Translate {props.input === false ? "to" : "from"}: {lang}
+          <input
+            style={{ borderStyle: "solid", outline: "none", zIndex: 1, backgroundColor: theme.button, color: theme.foreground }}
+            type="button"
+            value={!shown ? "▼" : "▲"}
+            onClick={() => {
+              setShown(!shown)
+            }}
+          />
+          {props.input === false ? <input
+            style={{ borderStyle: "solid", outline: "none", zIndex: 1, backgroundColor: theme.button, color: theme.foreground }}
+            type="button"
+            value="Add Step"
+            disabled={lang === ""}
+            onClick={() => {
+              if (lang === "") {
+                alert("No language selected")
+              }
+              else if (steps[steps.length - 1]?.language === lang) {
+                alert('Cannot translate twice in the row to the same language')
+                setLanguage()
+              } else {
+                props.addStep({
+                  language: lang,
+                  langCode: code,
+                })
+                _langlist = _langlist.filter((lang, i) => _langlist[i] !== lang)
+                //setLast(lang)
+                setLanguage()
+              }
+            }}
+          /> : null}
+          <animated.div className="langgrid" style={animate}>
+            {gridElements}
+          </animated.div>
+        </div>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

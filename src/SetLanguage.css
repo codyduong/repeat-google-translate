@@ -9,6 +9,14 @@
   grid-template-rows: var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row) var(--row);
 }
 
+.SetLangaugeButton {
+  justify-self: stretch;
+  text-overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  border-style: solid;
+}
+
 @media screen and (max-width: 600px) {
   .langgrid {
     grid-template-columns: 20% 20% 20% 20% 20%;

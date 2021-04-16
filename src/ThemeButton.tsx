@@ -3,9 +3,11 @@ import { useState } from "react"
 import { animated, useSpring } from "react-spring"
 import { ReactComponent as Moon } from "./themebuttonmoon.svg"
 import { ThemeContext } from "./Theme"
+import { useCookies } from "react-cookie"
 
 const ThemeButton = () => {
-  const [isDark, setIsDark] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(['isDark']);
+  const [isDark, setIsDark] = useState<boolean>(cookies.isDark ?? false)
   const animate = useSpring({
     transform: "translate(1.25em)",
     backgroundColor: "#846899",
@@ -14,12 +16,20 @@ const ThemeButton = () => {
       backgroundColor: "#303030",
     },
     reverse: !isDark,
-    reset: false,
   })
+
+  const setTheme = (prop: boolean) => {
+    setIsDark(prop)
+    if (prop) {
+      setCookie('isDark', prop, { path: '/ '})
+    } else {
+      removeCookie('isDark')
+    }
+  }
 
   return (
     <ThemeContext.Consumer>
-      {({theme, toggleTheme}) => (
+      {({ theme, toggleTheme }) => (
         <div
           className="ThemeButtonRect"
           style={{
@@ -28,7 +38,7 @@ const ThemeButton = () => {
           }}
           onClick={() => {
             toggleTheme()
-            setIsDark(!isDark)
+            setTheme(!isDark)
           }
           }
         >

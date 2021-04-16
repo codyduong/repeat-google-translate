@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import { useState, useEffect } from "react"
 import TextField from "./TextFields"
 import LanguageForm from "./LanguageForm"
 import Header from "./Header"
 import Footer from "./Footer"
 import { ThemeContext, themes } from './Theme'
+import { useCookies } from "react-cookie"
 
 const _FOOTERTEXT = "Made by Cody Duong. Currently a work in progress. Made for fun to practice TS and React"
 
@@ -11,18 +12,20 @@ const _FOOTERTEXT = "Made by Cody Duong. Currently a work in progress. Made for 
 
 const Main = () => {
 	const [text, setText] = useState("")
-	const [theme, setTheme] = useState(themes.light)
+	const [cookies] = useCookies(['isDark'])
+	const [theme, setTheme] = useState(cookies.isDark ? themes.dark : themes.light)
 	const toggleTheme = () => {
 		if (theme===themes.light) {
 			setTheme(themes.dark)
-			document.body.style.backgroundColor = themes.dark.background
-			document.body.style.color = themes.dark.foreground
 		} else {
 			setTheme(themes.light)
-			document.body.style.backgroundColor = themes.light.background
-			document.body.style.color = themes.light.foreground
 		}
 	}
+
+	useEffect(() => {
+		document.body.style.backgroundColor = theme.background
+		document.body.style.color = theme.foreground
+	})
 
 	const _styling = {
 		marginLeft: "auto",
@@ -30,7 +33,7 @@ const Main = () => {
 		width: "90vw",
 		fontSize: "18px",
 	}
-	
+
 	return (
 		<ThemeContext.Provider value={{theme: theme, toggleTheme: toggleTheme}}>
 			<div style={{backgroundColor: theme.background, color: theme.foreground, height: "100%", width: "100%"}}>
